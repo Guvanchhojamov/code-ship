@@ -29,23 +29,3 @@ func isAnagram(s string, t string) bool {
 	}
 	return sM+sSum == tM+tSum
 }
-
-//func isAnagram(s string, t string) bool {
-//	if len(s) != len(t) {
-//		return false
-//	}
-//
-//	sChars := map[byte]int{}
-//	tChars := map[byte]int{}
-//	for i := 0; i < len(s); i++ {
-//		sChars[s[i]]++
-//		tChars[t[i]]++
-//	}
-//
-//	for i, v := range sChars {
-//		if v != tChars[i] {
-//			return false
-//		}
-//	}
-//	return true
-//}

@@ -16,10 +16,10 @@ func isAnagram(s string, t string) bool {
 		return false
 	}
 
-	var sSum uint64
+	var sSum, tSum uint64
 	var sM = uint64(1)
-	var tSum uint64
 	var tM = uint64(1)
+
 	for i := 0; i < len(s); i++ {
 		sM *= uint64(s[i])
 		sSum += uint64(s[i])
@@ -27,7 +27,7 @@ func isAnagram(s string, t string) bool {
 		tSum += uint64(t[i])
 
 	}
-	return sM+sSum == tSum+tM
+	return sM+sSum == tM+tSum
 }
 
 //func isAnagram(s string, t string) bool {

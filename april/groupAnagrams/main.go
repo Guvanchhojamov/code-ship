@@ -12,12 +12,7 @@ func groupAnagrams(strs []string) (result [][]string) {
 	anagrams := map[uint64][]string{}
 
 	for _, str := range strs {
-		if _, ok := anagrams[getUniqKey(str)]; !ok {
-			anagrams[getUniqKey(str)] = append(anagrams[getUniqKey(str)], str)
-		} else {
-			anagrams[getUniqKey(str)] = append(anagrams[getUniqKey(str)], str)
-		}
-
+		anagrams[getUniqKey(str)] = append(anagrams[getUniqKey(str)], str)
 	}
 	for _, v := range anagrams {
 		result = append(result, v)

@@ -16,7 +16,7 @@ func strStr(haystack string, needle string) int {
 			fmt.Println(l, r)
 			r++
 		} else if r > 0 {
-			l -= r // left-i yene onki yerine goyyas we yzyny barlap gityas.
+			l -= r // left-i yene onki yerine goyyas.
 			fmt.Println(l)
 			r = 0
 		}

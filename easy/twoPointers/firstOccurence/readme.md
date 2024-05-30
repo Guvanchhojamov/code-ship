@@ -20,26 +20,6 @@ Given two strings `needle` and `haystack`, return the index of the first occurre
 - `1 <= haystack.length, needle.length <= 10^4`
 - `haystack` and `needle` consist of only lowercase English characters.
 
-## Solution
-
-To solve this problem, we can use Python's built-in string method `find()` which returns the index of the first occurrence of a substring, or `-1` if the substring is not found.
-
-### Implementation
-
-```python
-def strStr(haystack: str, needle: str) -> int:
-    return haystack.find(needle)
-
-# Example usage
-haystack1 = "sadbutsad"
-needle1 = "sad"
-print(strStr(haystack1, needle1))  # Output: 0
-
-haystack2 = "leetcode"
-needle2 = "leeto"
-print(strStr(haystack2, needle2))  # Output: -1
-```
-
 ### Solution 
 ```go
 func strStr(haystack string, needle string) int {

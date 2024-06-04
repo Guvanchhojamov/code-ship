@@ -9,18 +9,18 @@ func main() {
 }
 
 func reverseWords(s string) {
-	c := append(reverseStr([]byte(s)), ' ')
+	c := reverseStr([]byte(s))
 
 	var result, word []byte
 	for i := 0; i < len(c); i++ {
 		if c[i] != ' ' {
 			word = append(word, c[i])
 		} else if len(word) > 0 {
-			result = append(result, reverseStr(append(word, ' '))...)
+			result = append(result, reverseStr(word)...)
 			word = []byte{}
 		}
 	}
-	result = result[1:]
+	result = result[:len(result)-1]
 	fmt.Println(string(result), len(result))
 }
 
@@ -31,5 +31,5 @@ func reverseStr(word []byte) []byte {
 		l++
 		r--
 	}
-	return word
+	return append(word, ' ')
 }

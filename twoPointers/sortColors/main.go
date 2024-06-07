@@ -12,11 +12,11 @@ func sortColors(nums []int) {
 			nums[low], nums[i] = nums[i], nums[low]
 			low++
 			i++
-		case 1:
-			i++
 		case 2:
 			nums[i], nums[hight] = nums[hight], nums[i]
 			hight--
+		default:
+			i++
 		}
 	}
 }

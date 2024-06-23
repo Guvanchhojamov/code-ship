@@ -32,20 +32,3 @@ func judgeSquareSum(c int) bool {
 	}
 	return false
 }
-
-func judgeSquareSum2(c int) bool {
-	sqrtRes := math.Sqrt(float64(c))
-	sqrtFromC := int(math.Round(sqrtRes))
-	l, r := 0, sqrtFromC
-	for l <= c/2 {
-		if r*r > c {
-			r = (r / 2) + 1
-		} else {
-			if l*l+r*r == c {
-				return true
-			}
-			l++
-		}
-	}
-	return false
-}

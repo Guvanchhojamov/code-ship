@@ -31,6 +31,7 @@ stack.push()
 8:4
 6:2
 4:2
+10 1 1 6
 */
 func specialDiscount(nums []int) []int {
 	stack := []int{nums[0]}
@@ -43,8 +44,10 @@ func specialDiscount(nums []int) []int {
 		}
 		stack = append(stack, nums[i])
 	}
+	fmt.Println(discountMap)
 	for i, val := range nums {
 		nums[i] = nums[i] - discountMap[val]
+		discountMap[val] = 0
 	}
 	fmt.Println(nums)
 	return nums

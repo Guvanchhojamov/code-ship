@@ -8,7 +8,7 @@ func main() {
 
 func kidsCandies(candies []int, extraCandies int) []bool {
 	max := 0
-	var result = make([]bool, 0, 0)
+	var result = make([]bool, 0, len(candies))
 	for i := 0; i < len(candies); i++ {
 		if candies[i] > max {
 			max = candies[i]

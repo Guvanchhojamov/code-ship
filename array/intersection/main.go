@@ -31,3 +31,22 @@ func intersection(nums1 []int, nums2 []int) []int {
 
 	return result
 }
+
+func intersectionII(nums1 []int, nums2 []int) []int {
+	nums1Map, nums2Map := map[int]bool{}, map[int]bool{}
+	var result []int
+	for _, v := range nums1 {
+		nums1Map[v] = true
+	}
+	fmt.Println(nums1Map)
+	for _, v := range nums2 {
+		if _, ok := nums2Map[v]; !ok {
+			nums2Map[v] = true
+			if _, exists := nums1Map[v]; exists {
+				result = append(result, v)
+			}
+		}
+	}
+
+	return result
+}

@@ -5,7 +5,7 @@ func main() {
 }
 func passThePillow(n int, time int) int {
 	// 1 forward
-	// -1 back
+	// -1 backward
 	var direction = 1
 	var person = 1
 	var ticker = 0

@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	fmt.Println(intersection([]int{1, 2, 2, 1}, []int{2, 2}))
+	intersectionII([]int{4, 9, 5}, []int{9, 4, 9, 8, 4})
 }
 
 // Input: nums1 = [1,2,2,1], nums2 = [2,2]
@@ -40,12 +41,9 @@ func intersectionII(nums1 []int, nums2 []int) []int {
 	}
 	fmt.Println(nums1Map)
 	for _, v := range nums2 {
-		if _, ok := nums2Map[v]; !ok {
-			nums2Map[v] = true
-			if _, exists := nums1Map[v]; exists {
-				result = append(result, v)
-			}
-		}
+		nums2Map[v] = true
+	}
+	for i, v := range nums1 {
 	}
 
 	return result

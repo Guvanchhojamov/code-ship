@@ -43,8 +43,6 @@ func intersectionII(nums1 []int, nums2 []int) []int {
 	for _, v := range nums2 {
 		nums2Map[v] = true
 	}
-	for i, v := range nums1 {
-	}
 
 	return result
 }

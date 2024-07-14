@@ -26,6 +26,17 @@ s = "leet**cod*e"
     - The closest character to the 2nd star is 'e' in "lee*cod*e". `s` becomes "lecod*e".
     - The closest character to the 3rd star is 'd' in "lecod*e". `s` becomes "lecoe".
     - There are no more stars, so we return "lecoe".
-
-### Example 2
-**Input:**
+## Solution: 
+```go
+func removeStars(s string) string {
+	var stack []rune
+	for _, v := range s {
+		if v == '*' && len(stack) > 0 {
+			stack = stack[:len(stack)-1]
+			continue
+		}
+		stack = append(stack, v)
+	}
+	return string(stack)
+}
+```

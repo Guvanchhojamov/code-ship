@@ -16,19 +16,19 @@ func main() {
 }
 
 func averageWaitingTime(customers [][]int) float64 {
-	orderComplitedTime := customers[0][0] + customers[0][1]
+	orderCompletedTime := customers[0][0] + customers[0][1]
 	result := customers[0][1]
 
 	for i := 1; i < len(customers); i++ {
 		arrivalTime, prepTime := customers[i][0], customers[i][1]
 
-		if orderComplitedTime < arrivalTime {
-			orderComplitedTime = arrivalTime + prepTime
+		if orderCompletedTime < arrivalTime {
+			orderCompletedTime = arrivalTime + prepTime
 			result += prepTime
 			continue
 		}
-		orderComplitedTime += prepTime
-		result += orderComplitedTime - arrivalTime
+		orderCompletedTime += prepTime
+		result += orderCompletedTime - arrivalTime
 	}
 	return float64(result) / float64(len(customers))
 }

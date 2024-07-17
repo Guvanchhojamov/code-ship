@@ -6,12 +6,22 @@ import (
 )
 
 func main() {
-	fmt.Println(minDiffLowAndHigh([]int{6, 0, 1, 1, 4, 6, 6}))
+	fmt.Println(minDiffLowAndHigh([]int{82, 81, 95, 75, 20}))
 }
 
 /*
 time complexity: O(N+N+N) = O(N)
 space complexity: O(n)
+
+20 75 81 82 95
+
+6 0 1 4 5 6 6
+
+0 1 4 6 6 6
+
+1,5,0,10,14
+
+0 1 5 10 14
 */
 func minDiffLowAndHigh(nums []int) int {
 

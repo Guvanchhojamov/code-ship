@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
 	reverseSubstr("(oc)el")
 }
@@ -31,8 +27,7 @@ func reverseSubstr(s string) string {
 	for _, v := range s {
 		switch {
 		case v == ')':
-			fmt.Println(string(stack), len(stack))
-			for stack[len(stack)-1] != '(' && len(stack) > 0 {
+			for stack[len(stack)-1] != '(' {
 				tmpStack = append(tmpStack, stack[len(stack)-1])
 				stack = stack[:len(stack)-1]
 			}
@@ -40,12 +35,10 @@ func reverseSubstr(s string) string {
 				stack = stack[:len(stack)-1]
 			}
 			stack = append(stack, tmpStack...)
-			fmt.Println(string(stack), string(tmpStack))
 			tmpStack = []rune{}
 		default:
 			stack = append(stack, v)
 		}
 	}
-	fmt.Println(string(stack))
-	return ""
+	return string(stack)
 }

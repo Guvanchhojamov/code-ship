@@ -1,2 +1,2 @@
 # code-ship
-leetcode problems 
+code problems 

@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	maximumGain("aabbabkbbbfvybssbtaobaaaabataaadabbbmakgabbaoapbbbbobaabvqhbbzbbkapabaavbbeghacabamdpaaqbqabbjbababmbakbaabajabasaabbwabrbbaabbafubayaazbbbaababbaaha", 1926, 4320)
 }
@@ -38,51 +36,32 @@ for i in range s:
 func maximumGain(s string, x int, y int) int {
 	//x=ab
 	//y=ba
-	stack := []rune{}
-	tmpStack := []rune{}
-	res := 0
-	switch x > y {
-	case true:
-		for _, v := range s {
-			if len(stack) > 0 && v == 'b' && stack[len(stack)-1] == 'a' {
-				stack = stack[:len(stack)-1]
-				res += x
-			} else {
-				stack = append(stack, v)
-			}
-		}
-		if len(stack) > 0 {
-			for _, tmpVal := range stack {
-				if len(tmpStack) > 0 && tmpVal == 'a' && tmpStack[len(tmpStack)-1] == 'b' {
-					tmpStack = tmpStack[:len(tmpStack)-1]
-					res += y
-				} else {
-					tmpStack = append(tmpStack, tmpVal)
-				}
-			}
-		}
-	case false:
-		for _, val := range s {
-			if len(stack) > 0 && val == 'a' && stack[len(stack)-1] == 'b' {
-				stack = stack[:len(stack)-1]
-				res += y
-			} else {
-				stack = append(stack, val)
-			}
-		}
-		fmt.Println(string(stack), res)
-		if len(stack) > 0 {
-			for _, tmpVal := range stack {
-				if len(tmpStack) > 0 && tmpVal == 'b' && tmpStack[len(tmpStack)-1] == 'a' {
-					tmpStack = tmpStack[:len(tmpStack)-1]
-					res += x
-				} else {
-					tmpStack = append(tmpStack, tmpVal)
-				}
-			}
-		}
-		fmt.Println(string(stack), string(tmpStack), res)
+
+	if x > y {
+		return processSubString(s, x, y, 'a', 'b')
 	}
-	fmt.Println(res)
+	return processSubString(s, y, x, 'b', 'a')
+}
+
+func processSubString(s string, bigPoint, lessPoint int, firstChar, secondChar rune) int {
+	stack, tmpStack, res := []rune{}, []rune{}, 0
+	for _, v := range s {
+		if len(stack) > 0 && v == secondChar && stack[len(stack)-1] == firstChar {
+			stack = stack[:len(stack)-1]
+			res += bigPoint
+		} else {
+			stack = append(stack, v)
+		}
+	}
+	if len(stack) > 0 {
+		for _, tmpVal := range stack {
+			if len(tmpStack) > 0 && tmpVal == firstChar && tmpStack[len(tmpStack)-1] == secondChar {
+				tmpStack = tmpStack[:len(tmpStack)-1]
+				res += lessPoint
+			} else {
+				tmpStack = append(tmpStack, tmpVal)
+			}
+		}
+	}
 	return res
 }

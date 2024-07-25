@@ -43,7 +43,7 @@ func maximumGain(s string, x int, y int) int {
 	return processSubString(s, y, x, 'b', 'a')
 }
 
-func processSubString(s string, bigPoint, lessPoint int, firstChar, secondChar rune) int {
+func processSubString(s string, bigPoint, smallPoint int, firstChar, secondChar rune) int {
 	stack, tmpStack, res := []rune{}, []rune{}, 0
 	for _, v := range s {
 		if len(stack) > 0 && v == secondChar && stack[len(stack)-1] == firstChar {
@@ -57,7 +57,7 @@ func processSubString(s string, bigPoint, lessPoint int, firstChar, secondChar r
 		for _, tmpVal := range stack {
 			if len(tmpStack) > 0 && tmpVal == firstChar && tmpStack[len(tmpStack)-1] == secondChar {
 				tmpStack = tmpStack[:len(tmpStack)-1]
-				res += lessPoint
+				res += smallPoint
 			} else {
 				tmpStack = append(tmpStack, tmpVal)
 			}

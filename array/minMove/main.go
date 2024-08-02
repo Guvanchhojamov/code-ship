@@ -1,37 +1,33 @@
-package main 
+package main
 
-import "fmt"
-
-func main (){
-    minimumMoves("XXXO")
+func main() {
+	minimumMoves("OOOO")
 }
 
 func minimumMoves(s string) int {
-    reqLen := 3
-    xCount,oCount := 0,0
-    k:=0
-    c := []byte(s)
-    for reqLen > 0 {
-        for i:=0;i<len(c);i++{
-        k++
-        if c[i] == 'X' {xCount++}
-        if c[i] == 'O' {
-                oCount++ 
-                if oCount == len(c) {return 0}
-            }
-            
-            if i > 1 {
-                if k == 3 {
-                    fmt.Println(xCount, reqLen, k, i)
-                    if xCount == reqLen {
-                            c[i], c[i-1], c[i-2] = 'O','O','O'     
-                    }
+	reqLen := 3
+	c := []byte(s)
+	xCount, oCount, res := 0, 0, 0
 
-                }
-            }
-        }
-        reqLen--
-        fmt.Println(xCount, string(c))
-    }
-    return 0 
+	for reqLen > 0 {
+		xCount, oCount = 0, 0
+		for _, val := range c {
+			if val == 'X' {
+				xCount++
+			} else {
+				oCount++
+			}
+			if xCount+oCount == 3 {
+				if xCount == reqLen {
+					res++
+				}
+				xCount, oCount = 0, 0
+			}
+		}
+		reqLen--
+	}
+	if xCount > 0 {
+		res++
+	}
+	return res
 }

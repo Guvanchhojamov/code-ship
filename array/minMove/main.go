@@ -1,33 +1,18 @@
 package main
 
 func main() {
-	minimumMoves("OOOO")
+	minimumMoves("OXOX")
 }
 
 func minimumMoves(s string) int {
-	reqLen := 3
 	c := []byte(s)
-	xCount, oCount, res := 0, 0, 0
-
-	for reqLen > 0 {
-		xCount, oCount = 0, 0
-		for _, val := range c {
-			if val == 'X' {
-				xCount++
-			} else {
-				oCount++
-			}
-			if xCount+oCount == 3 {
-				if xCount == reqLen {
-					res++
-				}
-				xCount, oCount = 0, 0
-			}
+	res, i := 0, 0
+	for i < len(c) {
+		if c[i] == 'X' {
+			res++
+			i = i + 2
 		}
-		reqLen--
-	}
-	if xCount > 0 {
-		res++
+		i++
 	}
 	return res
 }

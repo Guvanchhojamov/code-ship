@@ -67,3 +67,35 @@ func rotate(nums []int, k int) {
 	}
 	copy(nums, res)
 }
+
+func rotate(nums []int, k int) {
+	k = k % len(nums) // why we do this? For k always be in nums range;
+
+	//1. Reverse all array
+	reverseArray(nums)
+
+	//2. Reverse first part
+	reverseArray(nums[:k])
+	//2. Reverse second part
+	reverseArray(nums[k:])
+
+}
+
+func reverseArray(nums []int) {
+	i, j := 0, len(nums)-1
+	for i < j {
+		nums[i], nums[j] = nums[j], nums[i]
+		i++
+		j--
+	}
+}
+
+/*  
+k=2 %4 = 2 
+
+1) 1 2 3 4 
+2) 4 3 2 1 
+3) 3 4 2 1 
+4) 3 4 1 2 
+
+*/

@@ -26,24 +26,24 @@ func rotate(nums []int, k int) {
 	//fmt.Println(k)
 }
 
-// this solution time limit exeptions on big test case. 
-// need optimization 
-// 
+// this solution time limit exeptions on big test case.
+// need optimization
+//
 /*
 	1 2 3 4 5 6 7   k=3    output: 5,6,7,1,2,3,4
-    1 2 3 4 5 6 7 0 0 0 0 
-	1 2 3 4 5 6 7 1 2 3 4 
-	        5 6 7 1 2 3 4 
+    1 2 3 4 5 6 7 0 0 0 0
+	1 2 3 4 5 6 7 1 2 3 4
+	        5 6 7 1 2 3 4
 
 
-     2) [-1,-100,3,99], k = 2 
+     2) [-1,-100,3,99], k = 2
 	     [3,99,-1,-100]
 
-		 -1 -100 3 99 0 0 
+		 -1 -100 3 99 0 0
 		 -1 -100 3 99 -1 -100
-		         3 99 -1 -100 
-		
-	
+		         3 99 -1 -100
+
+
 */
 
 // func rotate(nums []int, k int) {
@@ -53,12 +53,10 @@ func rotate(nums []int, k int) {
 // 		}
 // 		rotate(nusm, k--)
 // 	}
-// 	return 
+// 	return
 // }
 
-
-
-func rotate(nums []int, k int) {
+func rotate2(nums []int, k int) {
 	n := len(nums)
 	k = k % n
 	res := make([]int, n)
@@ -68,7 +66,7 @@ func rotate(nums []int, k int) {
 	copy(nums, res)
 }
 
-func rotate(nums []int, k int) {
+func rotate3(nums []int, k int) {
 	k = k % len(nums) // why we do this? For k always be in nums range;
 
 	//1. Reverse all array
@@ -90,12 +88,12 @@ func reverseArray(nums []int) {
 	}
 }
 
-/*  
-k=2 %4 = 2 
+/*
+k=2 %4 = 2
 
-1) 1 2 3 4 
-2) 4 3 2 1 
-3) 3 4 2 1 
-4) 3 4 1 2 
+1) 1 2 3 4
+2) 4 3 2 1
+3) 3 4 2 1
+4) 3 4 1 2
 
 */

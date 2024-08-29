@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 func  main(){
-    missingNumber([]int{3,0,1})
+   fmt.Println( missingNumber([]int{2,0,3}))
 }
 
 /*
@@ -10,20 +10,20 @@ func  main(){
   0 1 2 
 */
 func missingNumber(nums []int) int {
-    i := 0;
-    j := 0;
-    for  j < len(nums) {
-        if nums[i] != i {
-            if nums[i] >= len(nums) {
-              nums[len(nums)-1], nums[i] = nums[i], nums[len(nums)-1]
-            }
-            fmt.Println(nums, nums[i], i )
-            nums[nums[i]],nums[i] = nums[i], nums[nums[i]]
+    // solved with using cyrcle sort.
+    i:=0 
+    for i < len(nums) {
+        if nums[i] < len(nums) && nums[i] != nums[nums[i]] {
+            nums[i],nums[nums[i]] = nums[nums[i]],nums[i]
         }else{
             i++
         }
-        j++
     }
     fmt.Println(nums)
-    return 0
+    for i,val:=range nums {
+        if i != val {
+            return i 
+        }
+    }
+    return len(nums) 
 }

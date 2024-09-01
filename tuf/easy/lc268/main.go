@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	missingNumber([]int{3, 0, 1})
+	fmt.Println(missingNumber([]int{2, 0, 3}))
 }
 
 /*

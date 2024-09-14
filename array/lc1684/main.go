@@ -6,7 +6,7 @@ func main() {
 	countConsistentStrings("fstqyienx", []string{"n", "eeitfns", "eqqqsfs", "i", "feniqis", "lhoa", "yqyitei", "sqtn", "kug", "z", "neqqis"})
 }
 
-/*
+/* Leetcode 1684.
 You are given a string allowed consisting of distinct characters and an array of strings words.
 A string is consistent if all characters in the string appear in the string allowed.
 */

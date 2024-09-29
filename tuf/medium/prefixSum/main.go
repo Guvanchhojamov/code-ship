@@ -27,3 +27,13 @@ func prefixSums(nums []int, left, right int ){
 
     fmt.Println(pSum, subSum)
 }   
+
+/*
+  1 2 3 4 5  k=5 , out=2 
+  1 3 6 10 15 
+  0:1 
+  currSum +=nums[i]
+
+
+
+*/

@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main(){
-    prefixSums([]int{1,2,3,4,5},2,3)
+//    prefixSums([]int{1,2,3,4,5},2,3)
+    subArraySumK([]int{3, 4, 7, 2, -3, 1, 4, 2}, 7)
 }
 
 func prefixSums(nums []int, left, right int ){
@@ -37,3 +38,24 @@ func prefixSums(nums []int, left, right int ){
 
 
 */
+
+
+/*
+  nums = 3 4 7 2 -3 1 4 2    k =  7    out=4; 
+ 
+  sum[j]-sum[i] = k  
+  sum[j]-k = sum[i]
+
+*/
+
+func subArraySumK(nums []int, k int) int{
+    pSums := map[int]int{}
+    var currSum = 0
+    for i:=0;i<len(nums);i++{
+        currSum = currSum + nums[i]
+        pSums[i] = currSum
+    }
+
+    fmt.Println(pSums, currSum)
+    return 0 
+}

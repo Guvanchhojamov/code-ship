@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	longestSuccessiveElements([]int{1, 2, 3, 4, 5})
+	longestSuccessiveElements([]int{7, 7, 15, 20, 56, 67})
 }
 
 /*
@@ -13,7 +13,24 @@ You need to find the length of the longest sequence which contains the consecuti
 */
 
 func longestSuccessiveElements(nums []int) int {
-	fmt.Println(nums)
+	var count int = -1
+	var numsMap = make(map[int]bool, 0)
+	var incVal int = 1
+	var maxSuc = 0
+	for _, num := range nums {
+		numsMap[num] = true
+	}
+
+	for num := range numsMap {
+		incVal = 1
+		count = -1
+		for numsMap[num+incVal] {
+			count++
+			incVal++
+		}
+		maxSuc = max(maxSuc, count+1)
+	}
+	fmt.Println(numsMap, maxSuc)
 	return 0
 }
 
@@ -46,4 +63,9 @@ Explanation:
 		count = 0
 
 
+*/
+
+/*
+try to solve with optimal approach.
+using hashmap.
 */

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  2981. Find Longest Special Substring That Occurs Thrice I
 
@@ -31,7 +33,34 @@ Explanation: The longest special substring which occurs thrice is "a": substring
 It can be shown that the maximum length achievable is 1.
 */
 func main() {
+	maximumLength("aaaa")
+}
 
+func maximumLength(s string) int {
+	sp := 0
+	for i := sp; i < len(s); i++ {
+		var c string
+		for j := 0; j <= i; j++ {
+			c += string(s[i])
+		}
+		fmt.Println(c)
+	}
+
+	return 0
+}
+
+func generate(s string, sp int) {
+	if sp == len(s) {
+		return
+	}
+
+	for i := sp; i < len(s); i++ {
+		var c string
+		for j := 0; j < len(s); j++ {
+			c += string(s[i])
+		}
+		fmt.Println(c)
+	}
 }
 
 /*

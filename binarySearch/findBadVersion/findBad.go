@@ -28,6 +28,10 @@ func firstBadVersion(n int) int {
 	return res
 }
 
+func isBadVersion(n int) bool {
+	return false
+}
+
 /*
 for i:=0;i<=n;i++ {
         if isBadVersion(i) {

@@ -25,8 +25,6 @@ func xorAllNums(nums1 []int, nums2 []int) int {
 	return res
 }
 
-// man ansadyny chozmaya gitdim)
-// mayli
 // Optimal solution:
 
 /*

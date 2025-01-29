@@ -96,3 +96,8 @@ func maxInPile(piles []int) int {
 	}
 	return maximum
 }
+
+/*
+  This is the brute force approach, and we got time complexity int there
+So we need to optimize it with using binary search approach.
+*/

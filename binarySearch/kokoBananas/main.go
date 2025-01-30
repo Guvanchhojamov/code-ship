@@ -101,3 +101,20 @@ func maxInPile(piles []int) int {
   This is the brute force approach, and we got time complexity int there
 So we need to optimize it with using binary search approach.
 */
+
+func minEatingSpeedBs(piles []int, h int) int {
+	var maxPile = maxInPile(piles)
+	var low, high = 1, maxPile
+	// var ans = maxPile
+	for low <= high {
+		mid := (low + high) / 2
+		wastedHours := totalHours(piles, mid)
+		if wastedHours <= h {
+			high = mid - 1
+			//          ans = mid
+		} else {
+			low = mid + 1
+		}
+	}
+	return low
+}

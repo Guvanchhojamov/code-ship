@@ -111,7 +111,7 @@ func isPossible(blooms []int, day int, m, k int) bool {
 		}
 	}
 	buqesCount += possCount / k
-	return buqesCount == m
+	return buqesCount >= m // edge case fixed after submit test case .
 }
 
 /*
@@ -120,4 +120,7 @@ func isPossible(blooms []int, day int, m, k int) bool {
    pC=4
    bC=1+1=2
    2=2 return true.
+*/
+/*
+	bloomDay = [1000000000,1000000000]    m=1, k=1    res = 1000000000
 */

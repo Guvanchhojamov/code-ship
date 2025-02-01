@@ -124,3 +124,42 @@ func isPossible(blooms []int, day int, m, k int) bool {
 /*
 	bloomDay = [1000000000,1000000000]    m=1, k=1    res = 1000000000
 */
+
+/*
+   insteead of cheacking all day we implement bs for days, because days are in sorted decreasing order.
+*/
+
+func minDays2(bloomDay []int, m int, k int) int {
+	var minDay = slices.Min(bloomDay)
+	var maxDay = slices.Max(bloomDay)
+
+	var low, high = minDay, maxDay
+
+	for low <= high {
+		mid := low + ((high - low) / 2)
+		if isPossible(bloomDay, mid, m, k) {
+			high = mid - 1 // we need go to left, beacause we need minimum possible answer.
+		} else {
+			low = mid + 1
+		}
+	}
+	if low <= maxDay {
+		return low
+	}
+	return -1
+}
+
+func isPossible2(blooms []int, day int, m, k int) bool {
+	var possCount = 0
+	var buqesCount = 0
+	for _, bloomDay := range blooms {
+		if day >= bloomDay {
+			possCount++
+		} else if possCount > 0 {
+			buqesCount += possCount / k
+			possCount = 0
+		}
+	}
+	buqesCount += possCount / k
+	return buqesCount >= m // fixed after.
+}

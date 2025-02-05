@@ -92,3 +92,38 @@ class Solution:
             j=i
         return True
 */
+func areAlmostEqual(s1 string, s2 string) bool {
+	var i, j, count = 0, 0, 0
+	var n = len(s1)
+	var c1, c2 = []byte(s1), []byte(s2)
+	for i < n && j < n {
+		if c1[i] != c2[j] {
+			swapIndex, i, j := i, i+1, j+1
+			for i < n && j < n && c1[i] == c2[j] {
+				i++
+				j++
+			}
+			if j >= n || i >= n {
+				return false
+			} else if c1[i] != c2[j] {
+				c2[swapIndex], c2[j] = c2[j], c2[swapIndex]
+				count++
+			}
+			if string(c1) != string(c2) || count > 1 {
+				return false
+			}
+		}
+		i++
+		j++
+	}
+	return true
+}
+
+/*
+ 1. Brute foce:
+    Key points:
+        - setirngs are equal
+        - swap must be 1
+        - we can swap exactly one string
+
+*/

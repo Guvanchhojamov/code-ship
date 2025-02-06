@@ -75,7 +75,7 @@ func tupleSameProduct(nums []int) int {
 /*
 We got time limit exeed. How can we optimize?
 */
-func tupleSameProduct(nums []int) int {
+func tupleSameProductOptimized(nums []int) int {
 	var totalTuplesNumber = 0
 	var pairFrequency = make(map[int]int)
 	for i := 0; i < len(nums); i++ {

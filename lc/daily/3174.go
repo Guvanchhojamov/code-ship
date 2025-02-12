@@ -1,4 +1,4 @@
-package main
+package daily
 
 // 3174. Clear Digits
 func main() {

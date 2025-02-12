@@ -1,4 +1,4 @@
-package main
+package daily
 
 // 2661. First Completely Painted Row or Column
 func main() {

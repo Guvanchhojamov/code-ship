@@ -1,7 +1,5 @@
 package daily
 
-import "sort"
-
 /*
 You are given a 0-indexed integer array nums, and an integer k.
 
@@ -70,12 +68,12 @@ That is, there exists some sequence of operations after which all elements of th
     Priority queue.
 
 */
-Input: nums = [2,11,10,1,3], k = 10
-1 2 3 10 11
-1*2+2 =5
-5 3 10 11
-3*2 + 5 = 11
-11 10 11
+//Input: nums = [2,11,10,1,3], k = 10
+//1 2 3 10 11
+//1*2+2 =5
+//5 3 10 11
+//3*2 + 5 = 11
+//11 10 11
 /*
  1.Sort array
 
@@ -91,55 +89,53 @@ Input: nums = [2,11,10,1,3], k = 10
 
 */
 
-func minOperations(nums []int, k int) int {
-	var opsCount = 0
+//func minOperations(nums []int, k int) int {
+//	var opsCount = 0
+//
+//	// var smallNums = make([]int,2,2)
+//	for i:=0;i<len(nusm);i++{
+//		sort.Ints(nums)
+//
+//		if len(nums)>1 {
+//			newNum = nums[0]*2 + nums[1]
+//			if (newNum >= k && nums[1] >=k ) {
+//				return opsCount+1
+//			}
+//			nums[1] = opNum
+//			nums = nums[1:]
+//		}else{
+//			if nums[1]>=k {
+//				return opsCount+1
+//			}
+//		}
+//		reutrn opsCount
+//	}
 
-	// var smallNums = make([]int,2,2)
-	for i:=0;i<len(nusm);i++{
-		sort.Ints(nums)
+/*
+   100 101 102 103   k=105
+   opsC =0
+   100 101 102 103
+   301>k 101<
+   301 102 103
+   oc=1
+   102 103 301
+   307>105 and 103> 105
+   oc+1=2
+   307 301
+   301 307
 
-		if len(nums)>1 {
-			newNum = nums[0]*2 + nums[1]
-			if (newNum >= k && nums[1] >=k ) {
-				return opsCount+1
-			}
-			nums[1] = opNum
-			nums = nums[1:]
-		}else{
-			if nums[1]>=k {
-				return opsCount+1
-			}
-		}
-		reutrn opsCount
-	}
-
-	/*
-	   100 101 102 103   k=105
-	   opsC =0
-	   100 101 102 103
-	   301>k 101<
-	   301 102 103
-	   oc=1
-	   102 103 301
-	   307>105 and 103> 105
-	   oc+1=2
-	   307 301
-	   301 307
-
-	   [1,1,2,4,9] k=20
-	    op=0
-	    3 > 20 and 2>20
-	    op=1
-	    3 2 4 9
-
-
-
-	*/
+   [1,1,2,4,9] k=20
+    op=0
+    3 > 20 and 2>20
+    op=1
+    3 2 4 9
 
 
 
+*/
 
-	func minOperations(nums []int, k int) int {
+/*
+func minOperations2(nums []int, k int) int {
 		opsCount := 0
 		for {
 		sort.Ints(nums)
@@ -157,6 +153,6 @@ func minOperations(nums []int, k int) int {
 		nums = append([]int{newNum}, nums[2:]...)
 		opsCount++
 	}
-	}
+}
 
-
+*/

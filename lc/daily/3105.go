@@ -1,4 +1,4 @@
-package main
+package daily
 
 // 3105. Longest Strictly Increasing or Strictly Decreasing Subarray
 func main() {

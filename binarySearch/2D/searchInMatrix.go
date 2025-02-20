@@ -86,3 +86,49 @@ func searchMatrix(matrix [][]int, target int) bool {
 	}
 	return false
 }
+
+// More optimal solution is using cell concept.
+/*
+  matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+
+  1 3 5 7  10 11 16 20  23 30 34 60
+
+  the 1d array is also sorted, so what we need
+  need define row and col:
+    low = 0
+    high = n*m or
+
+    midIndex= 0..n*m
+    in 1D array midIndex = 6 for example.
+    row is index / to column numbers
+    col is index % to column numbers
+    row = len(matrix) / m
+    col = len(matrix) % m
+
+    if we have 6 cols, and index = 16
+    what is the index x,y = 16/6= 2; 16%6 = 4 (16-x)
+    1 2 3 4 5 6
+    7 8 9 10 11 12
+    13 14 15 16
+    fo
+*/
+
+func searchMatrixOptimal(matrix [][]int, target int) bool {
+	var result = false
+	var n, m = len(matrix), len(matrix[0])
+	var low, high = 0, n * m
+
+	for low <= high {
+		mid := (low + high) / 2
+		row, col := mid/2, mid%2
+		if matrix[row][col] == target {
+			return true
+		}
+		if matrix[row][col] > target {
+			high = mid - 1
+		} else {
+			low = mid + 1
+		}
+	}
+	return result
+}

@@ -12,7 +12,14 @@ package f3kingLL
 //	nums = ListNodeToArr(list)
 //
 //	fmt.Println("List to arr:", nums)
+
+//  list = insertToHead(list, 15)
+//  list = NewNode(25, nil)
+//  fmt.Println("new head: ", list)
+//  nums = ListNodeToArr(list)
 //
+//  fmt.Println("List to arr:", nums)
+
 //}
 
 type ListNode struct {

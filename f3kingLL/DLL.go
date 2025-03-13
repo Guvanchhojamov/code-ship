@@ -139,6 +139,24 @@ func arrToListNode(nums []int) *ListNode {
 	return head
 }
 
+func reverseListNode(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	var current = head
+	var last = head
+	for current != nil {
+		last = current.Prev
+		current.Prev = current.Next
+		current.Next = last
+
+		current = current.Prev
+
+	}
+	return last.Prev
+}
+
 func listToArr(head *ListNode) []int {
 	var res = []int{}
 

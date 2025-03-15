@@ -89,3 +89,33 @@ func detectCycleII(head *ListNode) *ListNode {
 	}
 	return nil
 }
+
+/*
+ Given the head of a linked list,
+ determine whether the list contains a loop.
+ If a loop is present, return the number of nodes in the loop, otherwise return 0.
+*/
+
+/*
+ Brute force.
+    add node to hash map.
+	node:index
+	if node in map:
+		tmp = node
+		res = tmp.Index+1 - node.index
+		node = node.Next
+	return res.
+
+    0 1 2 3 4 5  = 6
+    1 2 3 4 5 6
+2. Optimal.
+	Find start of loop using slow and fast.
+		slow == fast
+	Then init
+	count=1, fast = fast.Next
+	while fast != slow {
+		fast = fast.Next
+		cnt++
+	}
+return cnt
+*/

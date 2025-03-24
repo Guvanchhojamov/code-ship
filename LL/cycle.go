@@ -1,4 +1,4 @@
-package f3kingLL
+package LL
 
 /*
 142. Linked List Cycle II

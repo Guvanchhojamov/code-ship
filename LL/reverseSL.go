@@ -1,4 +1,4 @@
-package f3kingLL
+package LL
 
 /*
 Given the head of a singly linked list, return the middle node of the linked list.

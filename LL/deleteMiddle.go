@@ -59,3 +59,16 @@ The number of nodes in the list is in the range [1, 10^5].
    in the end slow is median.
    delete slow node.
 */
+func deleteMiddle(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return nil
+	}
+	var slow, fast, prev = head, head, head
+	for fast != nil && fast.Next != nil {
+		prev = slow
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	prev.Next = prev.Next.Next
+	return head
+}

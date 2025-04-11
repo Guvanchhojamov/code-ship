@@ -36,7 +36,7 @@ Constraints:
 
 */
 
-func countSymmetricIntegers(low int, high int) int {
+func countSymmetricIntegersOurSolution(low int, high int) int {
 	var ans = 0
 	for low <= high {
 		digits := makeNumsArray(low)

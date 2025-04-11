@@ -1,4 +1,4 @@
-package f3kingLL
+package LL
 
 //func main() {
 //	fmt.Println("Hello, World!")

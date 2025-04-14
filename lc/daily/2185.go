@@ -1,8 +1,8 @@
 package daily
 
-func main() {
+// func main() {
 
-}
+// }
 
 /*
 

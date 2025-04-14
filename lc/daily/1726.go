@@ -1,8 +1,8 @@
 package daily
 
-func main() {
+// func main() {
 
-}
+// }
 
 /*
 1726. Tuple with Same Product

@@ -4,9 +4,9 @@ import "fmt"
 
 // 1267. Count Servers that Communicate
 
-func main() {
-	countServers([][]int{{1, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}})
-}
+// func main() {
+// 	countServers([][]int{{1, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}})
+// }
 
 func countServers(grid [][]int) int {
 	var res = 0

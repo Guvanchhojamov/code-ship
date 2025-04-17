@@ -32,9 +32,9 @@ Constraints:
 1 <= nums[i] <= 100
 */
 
-func main() {
+// func main() {
 
-}
+// }
 
 func check(nums []int) bool {
 	var breakPoint = 0

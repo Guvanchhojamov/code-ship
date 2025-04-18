@@ -1,5 +1,7 @@
 package recursion
 
+import "fmt"
+
 /*
 78. Subsets
 Given an integer array nums of unique elements, return all possible subsets (the power set).
@@ -34,6 +36,11 @@ start from full arr
 second starts from empty array.
 */
 
+func main() {
+	r := subsets([]int{3, 1, 2})
+	fmt.Println(r)
+}
+
 func subsets(nums []int) [][]int {
 	result := [][]int{}
 	return sub(result, nums, []int{}, 0)
@@ -57,3 +64,12 @@ func sub(res [][]int, nums []int, arr []int, i int) [][]int {
 
 	return res
 }
+
+/*
+
+[3 1 2]
+res = [][]
+arr = []
+1,[]; 2,[]; 3,[];   [][]= [[], [2], ]
+
+*/

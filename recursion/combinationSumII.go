@@ -78,11 +78,11 @@ func combinationSum2(candidates []int, target int) [][]int {
 	var res = make([][]int, 0, 0)
 	sort.Ints(candidates)
 	var arr = make([]int, 0, 0)
-	res = fn(res, candidates, arr, 0, target)
+	res = fnnn(res, candidates, arr, 0, target)
 	return res
 }
 
-func fn(res [][]int, nums, arr []int, idx, target int) [][]int {
+func fnnn(res [][]int, nums, arr []int, idx, target int) [][]int {
 	// answer case:
 	if target == 0 {
 		res = append(res, append([]int{}, arr...)) // to avoid mutation
@@ -102,7 +102,7 @@ func fn(res [][]int, nums, arr []int, idx, target int) [][]int {
 			break
 		}
 		arr = append(arr, nums[i])
-		res = fn(res, nums, arr, i+1, target-nums[i])
+		res = fnnn(res, nums, arr, i+1, target-nums[i])
 		arr = arr[:len(arr)-1] // remove added
 	}
 

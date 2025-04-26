@@ -1,2 +1,3 @@
 # code-ship
-code problems 
+ leetcode problems with solution and explanation.
+ 

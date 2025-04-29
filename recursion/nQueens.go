@@ -36,3 +36,92 @@ Start with 0,0 col and iterate over end n*n array.
  we need helper function isSafe with says can we paste in next col or not.
 if not return call back and remove Q from prev row,col pasted place.
 */
+
+func solveNQueens(n int) [][]string {
+	var mainBoard = make([][][]rune, 0)
+	var tmpBoard = make([][]rune, 0)
+	for i := 0; i < n; i++ {
+		row := []rune{}
+		for j := 0; j < n; j++ {
+			row = append(row, '.')
+		}
+		tmpBoard = append(tmpBoard, row)
+	}
+	fnQueen(&mainBoard, tmpBoard, 0)
+	r := generateResult(mainBoard)
+	return r
+}
+
+func fnQueen(mainBoard *[][][]rune, tmpBoard [][]rune, col int) {
+	// base case
+	if col == len(tmpBoard) {
+		var newBoard = make([][]rune, len(tmpBoard))
+		for i := range tmpBoard {
+			newBoard[i] = make([]rune, len(tmpBoard[i]))
+			copy(newBoard[i], tmpBoard[i])
+		}
+		*mainBoard = append(*mainBoard, newBoard)
+		return
+	}
+
+	// recursion case. for each row element in this column we need to check
+	for row := 0; row < len(tmpBoard); row++ {
+		if isSafe(tmpBoard, col, row) {
+			tmpBoard[row][col] = 'Q'
+			fnQueen(mainBoard, tmpBoard, col+1)
+			tmpBoard[row][col] = '.'
+		}
+	}
+
+	return
+}
+
+// we need isSafe helper function to check can we paste queen in there or not.
+func isSafe(board [][]rune, col, row int) bool {
+	n := len(board)
+	for c := 0; c < col; c++ {
+		if board[row][c] == 'Q' {
+			return false
+		}
+	}
+
+	for r := 0; r < row; r++ {
+		if board[r][col] == 'Q' {
+			return false
+		}
+	}
+
+	// Chep yokarky diogonaly barlamaly.
+	for r, c := row-1, col-1; r >= 0 && c >= 0; r, c = r-1, c-1 {
+		if board[r][c] == 'Q' {
+			return false
+		}
+	}
+
+	// chep ashaky diogonaly barlamaly
+	for r, c := row+1, col-1; r < n && c >= 0; r, c = r+1, c-1 {
+		if board[r][c] == 'Q' {
+			return false
+		}
+	}
+
+	return true
+}
+
+func generateResult(boards [][][]rune) [][]string {
+	var res [][]string
+	for _, board := range boards {
+		var temp []string
+		for _, row := range board {
+			temp = append(temp, string(row))
+		}
+		res = append(res, temp)
+	}
+	return res
+}
+
+/*
+This is the linear solution, we can optimize time, using hashmap.
+but it take more space complexity.
+Store queens in map, and check with o-1 time.
+*/

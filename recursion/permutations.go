@@ -105,3 +105,8 @@ func fnPer2(res *[][]int, nums []int, start int) {
 	}
 	return
 }
+
+/*
+  1 2 3
+
+*/

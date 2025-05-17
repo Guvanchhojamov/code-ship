@@ -83,7 +83,7 @@ func removeLastSetBit(x int) {
 	var res = x
 	for i := 0; i <= 31; i++ {
 		if x&(1<<i) > 0 { // then it is the first set bit,so then toggle it
-			res = x &^ (1 << i)
+			res = x & ^(1 << i)
 			break
 		}
 	}

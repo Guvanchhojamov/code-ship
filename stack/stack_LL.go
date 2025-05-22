@@ -74,3 +74,51 @@ In queue too like similar linked list iteration.
 We keep the head and add (link) ne elements from back, instead of changing head itself.
 So, this will be first in first out then.
 */
+
+/*
+20. Valid Parentheses
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
+determine if the input string is valid.
+
+An input string is valid if:
+
+- Open brackets must be closed by the same type of brackets.
+- Open brackets must be closed in the correct order.
+- Every close bracket has a corresponding open bracket of the same type.
+
+
+Example 1:
+Input: s = "()"
+Output: true
+
+Example 2:
+Input: s = "()[]{}"
+Output: true
+
+Example 3:
+Input: s = "(]"
+Output: false
+
+Example 4:
+Input: s = "([])"
+
+Output: true
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+*/
+/*
+ So, the are can be many solutions using stack, for example.
+What is the balanced parantheses?
+the open and closed counts must be equal, opened == closed
+[]string, using stack we iterate over s, and
+if is open '(' add to stack else, remove from stack.
+after itration, stack.len ==0 must be zero, if ==0 return true else return flase.
+tc: O(n); sc: O(n), we use stack.
+2. instead of  keeping paranthesess in stack, we need just count of opened and closed one.
+	if `(` balance++ else balance--.
+if balance == 0 then return true otherwise return false.
+tc: O(n); sc:O(1) we dont use any extra memory.
+*/

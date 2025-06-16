@@ -92,4 +92,6 @@ sc: 2n= n
  if i==j then check where i!=j and a[i][j] == 0 j++.
  and check where i!= and a[i][j]==1 i++
  if ok return i or j, it is our ans else return -1 we dont have celebrity.
+ tc: N
+ sc: 1
 */

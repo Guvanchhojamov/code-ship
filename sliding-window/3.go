@@ -62,7 +62,7 @@ func lengthOfLongestSubstringSlWindow(s string) int {
 	var mx = 0
 	var l, r = 0, 0
 	var c = []byte(s)
-	var mp = make(map[byte]int, len(c))
+	var mp = make(map[byte]int, 256)
 	for r < len(c) {
 		if _, ok := mp[c[r]]; ok {
 			delete(mp, c[l])

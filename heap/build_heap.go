@@ -22,11 +22,21 @@ range of leaves: n/2 to n-1.
 // func main() {
 // 	r := build_max_heap([]int{6, 3, 5, 0, 8, 2, 1, 9})
 // 	fmt.Println(r)
+
+// 	m := build_min_heap([]int{3, 6, 5, 0, 8, 2, 1, 9})
+// 	fmt.Println(m)
 // }
 
 func build_max_heap(nums []int) []int {
 	for i := (len(nums) / 2) - 1; i >= 0; i-- {
 		nums = mx_heapify(nums, i)
+	}
+	return nums
+}
+
+func build_min_heap(nums []int) []int {
+	for i := len(nums)/2 - 1; i >= 0; i-- {
+		nums = mn_heapify(nums, i)
 	}
 	return nums
 }
@@ -53,5 +63,24 @@ func mx_heapify(nums []int, i int) []int {
 }
 
 func mn_heapify(nums []int, i int) []int {
-	return []int{}
+	var lefti = 2*i + 1
+	var righti = 2*i + 2
+	var lowesti = i
+
+	if lowesti > len(nums) {
+		return nums
+	}
+
+	if lefti < len(nums) && nums[lefti] < nums[lowesti] {
+		lowesti = lefti
+	}
+	if righti < len(nums) && nums[righti] < nums[lowesti] {
+		lowesti = righti
+	}
+	if lowesti != i {
+		nums[lowesti], nums[i] = nums[i], nums[lowesti]
+		return mn_heapify(nums, lowesti)
+	}
+	// otherwise return nums.
+	return nums
 }

@@ -81,3 +81,22 @@ build heap:
 tc: O(N)
 sc: O(n)
 */
+
+/*
+ 2. Check if an array represents a min-heap or not ?
+ to be mni heap, the root must be min element in the array.
+ to be this the left and right child must be less then parent node element.
+ itreate over arr and check childs, if not less then element, return false, else return true.
+ tc: O(logn)
+ sc: O(1)
+2. Convert min Heap to max Heap
+when we build any heap, we start iterating from bottom to top.
+and bottom starts from last inner node.
+Start from last inner node and go to top and convert min-heap to max recursively.
+inner nodes: 0-> n/2-1. 0-indexed array.
+while i:=n-2/1;i>=0: do recursive maxheap.
+left, right, largest;
+default largest is parent or root node.
+swap with max(left,right) if they are greater than root node.
+
+*/

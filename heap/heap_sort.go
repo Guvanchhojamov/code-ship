@@ -27,6 +27,7 @@ sc: n for result array.
 // 	fmt.Println(r)
 // }
 
+
 func heapSort(nums Heap) Heap {
 	var res = make(Heap, 0, len(nums))
 
@@ -62,4 +63,38 @@ func heapifyMax(nums []int, i int) Heap {
 		return heapifyMax(nums, largest)
 	}
 	return nums
+}
+
+// Optimal solution.
+func sortArrayInPlace(nums Heap) Heap {
+	n := len(nums)
+
+	for i := n/2 - 1; i >= 0; i-- {
+		heapifyMaxWithSize(nums, i, n)
+	}
+
+	for size := n - 1; size > 0; size-- {
+		nums[0], nums[size] = nums[size], nums[0]
+		heapifyMaxWithSize(nums, 0, size)
+	}
+	return nums
+}
+
+func heapifyMaxWithSize(nums []int, i int, heapSize int) {
+	var largest = i
+	var left = 2*i + 1
+	var right = 2*i + 2
+
+	if left < heapSize && nums[left] > nums[largest] {
+		largest = left
+	}
+
+	if right < heapSize && nums[right] > nums[largest] {
+		largest = right
+	}
+
+	if largest != i {
+		nums[i], nums[largest] = nums[largest], nums[i]
+		heapifyMaxWithSize(nums, largest, heapSize)
+	}
 }

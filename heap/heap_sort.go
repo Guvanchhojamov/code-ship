@@ -27,7 +27,6 @@ sc: n for result array.
 // 	fmt.Println(r)
 // }
 
-
 func heapSort(nums Heap) Heap {
 	var res = make(Heap, 0, len(nums))
 

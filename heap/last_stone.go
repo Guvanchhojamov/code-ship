@@ -1,6 +1,8 @@
 package heap
 
-import "sort"
+import (
+	"container/heap"
+)
 
 /*
  1046. Last Stone Weight
@@ -41,20 +43,33 @@ Constraints:
 1 <= stones[i] <= 1000
 */
 
+// func main() {
+// 	fmt.Println("Hello world")
+// 	nums := []int{2, 7, 4, 1, 8, 1}
+// 	r := lastStoneWeight(nums)
+// 	fmt.Println(r)
+// }
+
 func lastStoneWeight(stones []int) int {
-	for len(stones) > 1 {
-		sort.Slice(stones, func(a, b int) bool {
-			return stones[b] < stones[a]
-		})
-		x := stones[0]
-		y := stones[1]
+	pq := &MaxHeap{}
+	heap.Init(pq)
+
+	for _, v := range stones {
+		heap.Push(pq, v)
+	}
+
+	for pq.Len() > 1 {
+		x := heap.Pop(pq).(int)
+		y := heap.Pop(pq).(int)
 		if x != y {
-			stones = append(stones, x-y)
+			heap.Push(pq, x-y)
 		}
-		stones = stones[2:]
 	}
-	if len(stones) == 1 {
-		return stones[0]
+
+	// If one stone remains, return its weight
+	if pq.Len() == 1 {
+		return heap.Pop(pq).(int)
 	}
+	// If no stones remain, return 0
 	return 0
 }

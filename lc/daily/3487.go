@@ -155,3 +155,12 @@ func maxSum(nums []int) int {
 }
 
 */
+/*
+ Summary read repeatly the desc.
+ 1. Ask questions, cases. what if all elements are <0.
+ 2. What if all elements are > 0.
+ 3. What if 0 is the max element? same as 1.
+ Then we clarify solution using this answers.
+ Always do the dry run and try to find approach.
+
+*/

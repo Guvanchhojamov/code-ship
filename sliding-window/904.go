@@ -64,28 +64,28 @@ Constraints:
 */
 /*
  How we can optimze?
- - use 2 potiner to keep window. 
- - keep counter. 
- - when len.map > k: increrase left. remove left from map. decrease counter. 
- - else add to map right increase right, increase counter. 
- - check mx,counter. 
+ - use 2 potiner to keep window.
+ - keep counter.
+ - when len.map > k: increrase left. remove left from map. decrease counter.
+ - else add to map right increase right, increase counter.
+ - check mx,counter.
  - go until right > n;
- - return mx. 
+ - return mx.
 */
 
 func totalFruit(fruits []int) int {
-    var mp = make(map[int]bool,2)
-	var count = 0 
-	var left,right = 0,0 
-	var mx = 0 
+	var mp = make(map[int]bool, 2)
+	var count = 0
+	var left, right = 0, 0
+	var mx = 0
 	for right < len(fruits) {
-		mp[fruits[right]] = true 
+		mp[fruits[right]] = true
 		if len(mp) > 2 {
-			delete(mp,fruits[left])
-			left++ 
-			count-- 
+			delete(mp, fruits[left])
+			left++
+			count--
 		}
-		count++ 
+		count++
 		mx = max(mx, count)
 	}
 	return mx

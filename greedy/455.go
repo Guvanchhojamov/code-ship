@@ -1,5 +1,7 @@
 package greedy
 
+import "sort"
+
 /*
 455. Assign Cookies
 
@@ -50,3 +52,19 @@ Since g[i]<=c[i] then,
  - To get maximum possible answer we must go greedy.
  - find where g[i]<=c[i], most closest one, and
 */
+
+func findContentChildren(g []int, s []int) int {
+	sort.Ints(g)
+	sort.Ints(s)
+	var child, cooki = 0, 0
+	for child < len(g) && cooki < len(s) {
+		if g[child] <= s[cooki] {
+			child++
+			cooki++
+		} else {
+			cooki++
+		}
+	}
+	return child
+
+}

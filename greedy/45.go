@@ -55,7 +55,7 @@ approach:
 	jumpi = max(jumpi,)
 */
 
-func jumpII(nums []int) int {
+func jumpGameII(nums []int) int {
 	var currBundary, farest = 0, 0
 	var jumps = 0
 	for i := 0; i <= len(nums)-2; i++ {

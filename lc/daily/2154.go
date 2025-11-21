@@ -53,7 +53,7 @@ How can we find number effectively?
   2. Do process until original in map:
      x = original
   	map[original] = x*2.
-	map.delete(x)
+	// map.delete(x)
   3. after while loop is ends return final original value.
   tc: N + O(1) since unsorted map is O(1) time accessibility.
   sc: O(n) - since, we store N elements in map.

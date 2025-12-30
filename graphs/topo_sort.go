@@ -23,10 +23,10 @@ func topoSort(V int, adj [][]int) []int {
 	for len(q) > 0 {
 		node := q[0]
 		q = q[1:]
-		for _, v := range adj[node] {
-			indegrees[v]--
-			if indegrees[v] == 0 {
-				q = append(q, v)
+		for _, nei := range adj[node] {
+			indegrees[nei]--
+			if indegrees[nei] == 0 {
+				q = append(q, nei)
 			}
 		}
 		ans = append(ans, node)
@@ -114,3 +114,16 @@ It is harder some times, to keep track correctly recursion calss, and process al
 	- then add curr node.val to response.
 	Repeat until q is empty.
 */
+
+func XorY(x, y int) bool {
+	if x == y {
+		return true
+	} else if y == x {
+		return true
+	}
+	if x != y {
+		return false
+	} else {
+		return true
+	}
+}

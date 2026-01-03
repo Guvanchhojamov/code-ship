@@ -1,6 +1,9 @@
 package graphs
 
-import "container/heap"
+import (
+	"container/heap"
+	"slices"
+)
 
 type item struct {
 	node int
@@ -96,4 +99,134 @@ func abs(x int) int {
    - after find min spanning tree for this connected nodes.
    using PQ, and Primes algo.
 
+*/
+
+type DisjointSet struct {
+	parents, sizes, ranks []int
+}
+
+func (d *DisjointSet) unionBySize(u, v int) {
+	up := d.findParent(u)
+	vp := d.findParent(v)
+
+	if up == vp {
+		return
+	}
+	if d.sizes[vp] > d.sizes[up] {
+		d.parents[up] = vp
+		d.sizes[vp] += d.sizes[up]
+	} else {
+		d.parents[vp] = up
+		d.sizes[up] += d.sizes[vp]
+	}
+}
+
+func (d *DisjointSet) unionByRank(u, v int) {
+	u_p := d.findParent(u)
+	v_p := d.findParent(v)
+	if u_p == v_p {
+		return
+	}
+	if d.ranks[v_p] > d.ranks[u_p] {
+		d.parents[u_p] = v_p
+	} else if d.ranks[u_p] > d.ranks[v_p] {
+		d.parents[v_p] = u_p
+	} else {
+		d.parents[v_p] = u_p
+		d.ranks[u_p] += 1 // increment only when equal rank
+	}
+}
+
+func (d *DisjointSet) findParent(node int) int {
+	if d.parents[node] == node {
+		return node
+	}
+	ult_p := d.findParent(d.parents[node])
+	d.parents[node] = ult_p
+	return ult_p
+}
+
+func NewDisjointSet(n int) DisjointSet {
+	ds := DisjointSet{
+		parents: make([]int, n),
+		sizes:   make([]int, n),
+		ranks:   make([]int, n),
+	}
+	for i := range ds.parents {
+		ds.parents[i] = i
+		ds.sizes[i] = 1
+	}
+	return ds
+}
+
+type Edge struct {
+	from, to, cost int
+}
+
+func minCostConnectPointsWithUnion(points [][]int) int {
+	edges := createEdges(points)
+	slices.SortFunc(edges, func(a, b Edge) int {
+		if a.cost > b.cost {
+			return 1
+		}
+		return -1
+	})
+
+	//fmt.Println("edges", edges)
+
+	result := 0
+	edgesCount := 0
+	ds := NewDisjointSet(len(points))
+	for _, ed := range edges {
+		if edgesCount == len(points)-1 {
+			break
+		}
+		if ds.findParent(ed.from) != ds.findParent(ed.to) {
+			ds.unionByRank(ed.from, ed.to)
+			result += ed.cost
+			edgesCount++
+		}
+	}
+	return result
+}
+
+func createEdges(points [][]int) []Edge {
+	edges := []Edge{}
+	for i := 0; i < len(points); i++ {
+		for j := i + 1; j < len(points); j++ {
+			edges = append(edges,
+				Edge{
+					i, j, abs(points[i][0]-points[j][0]) + abs(points[i][1]-points[j][1]),
+				})
+		}
+	}
+	return edges
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return x * (-1)
+	}
+	return x
+}
+
+/*
+ this problem is MST, minimum spanning tree, need to return mincost to connect all nodes.
+ Before we solve this with prims algo.
+ Now we try to solve this with Kruskals+Union find algo.
+Approach:
+    Since we need min cost, sort edges by cost:
+        {from,to,cost}
+    after start iterate one by one:
+    take node, if from,to is in one path, in same set
+    just ignore, because they aready connected.
+    if they are not in same set then union() them into one set.
+    and increment count of connected edges. They must be exactly V-1.
+    and add cost to response.
+    why it works ?
+1. we take only 1 edge for connect.
+    if they already connected we just skip...
+2. we take min cost edge from all possibiliteis.
+TC: VLogV - sort + ~V(1) - union find
+SC: E - edges arr. + V union find..
 */

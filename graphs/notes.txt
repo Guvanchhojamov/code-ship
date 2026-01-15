@@ -1,0 +1,55 @@
+Some notes about graph algos: 
+- BFS, DFS. 
+ when you need simple iteration over graph, perform operations its nodes and its neighbours. 
+    You can use simple DFS and BFS. for graph in most cases used BFS.
+ 
+- Topological sort. 
+    When in graphs or something similar like this, if you need somehow find ordered, 
+    nodes, or nodes depends from each other, and you need schedule something form given order. 
+    Its topo sort and you can use Kan's algoryhtm in BFS or simple DFS. 
+        - claculate all indegrees (dependencies) 
+        - add al free nodes to queue. 
+        - free up all dep neighbours of node. 
+        - if they become free add to queue to process its nodes. 
+        - add curr node to result.    
+    Or using DFS + postorder traversal, because in postorder we iterate all childs of current node. 
+    So it works, fine. 
+    Graph must be: Directed; No cyrcles.
+- Dijkstras algo. 
+    When you need to find some short path from node A->B, then it is defenently
+    short path algo. Its Dijkstras algorythm.
+    One source alog only from root to end for example. 
+    the algo:
+        - create destinations arr to keep track min possible way. Start they all Math.INF. 
+        - add start node to PQ. 
+        - PQ must be prioritized using edge weight. 
+        - Take each time min weight node, and update destinations arr[node]
+            if curr weight < than dest[node]Weight. It means we found shortest path from->to node. 
+        - Do this for all neighbours until PQ is empty. 
+    We can use PQ(minHeap) or just Queue or Set(). When use what? 
+        for Weighted graphs we use MinHeap/Set (need remove control) because we need min weight.
+        for Unweighted graphs we can use simple Queue, because all weight are similar 
+        ex:1 in most cases. 
+    Graph must be: Directed/undirected. Weighted/Unweighted.. cyrcles or not doesnt matter.
+- Prims algoryhtm:
+    When we need connect nodes with minumum cost, or find shortest cost to connect all nodes.
+    Like ignoring some other edges. we use this algo. 
+    - V nodes need exactly V-1 edges this is important understanding for this algo. 
+    - Only most optimal or minimum weight. 
+    - keep visited array to dont process already visited node. 
+    - keep MinHeap. PQ to process neighbours. and pop minimum weighted node.
+    - keep totalSum. or mst list if you need path also.  
+    - keep edgesCount to check for V-1 exacty..
+- Disjoint set: 
+    - UnionSet: 
+        - Connect node using Rank 
+        - Connect nodes using Size.
+         if a.size == b.size or rang connect them and +1 to paretn size/rank. 
+    -findUltimateParent.
+        Compress path. 
+- When we need work with dynamically changing nodes we need to use Disjoint set algo. 
+    find some connections, size for some graph components and similar tlike this algos we
+    need disjoint set. 
+ 
+     
+

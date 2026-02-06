@@ -38,7 +38,7 @@ What arguments do we need for this?
  //recursion case
  if nums[i] > prev:
 	return 1 + fn(i+1, nums[i])
-
+	
  return fn(i+1, prev)
 
 Ok, can we do better with taboulation maybe?
